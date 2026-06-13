@@ -4,7 +4,7 @@ month,category,net_inflow_crore
 2024-04,Small Cap,3533.0
 2024-04,Flexi Cap,4947.0
 2024-04,Large & Mid Cap,4214.0
-2024-04,ELSS,466.0
+2024-04,Elss,466.0
 2024-04,Value/Contra,1328.0
 2024-04,Sectoral/Thematic,8052.0
 2024-04,Liquid,37537.0
@@ -16,7 +16,7 @@ month,category,net_inflow_crore
 2024-05,Small Cap,4092.0
 2024-05,Flexi Cap,5529.0
 2024-05,Large & Mid Cap,4368.0
-2024-05,ELSS,553.0
+2024-05,Elss,553.0
 2024-05,Value/Contra,1361.0
 2024-05,Sectoral/Thematic,8354.0
 2024-05,Liquid,41872.0
@@ -28,7 +28,7 @@ month,category,net_inflow_crore
 2024-06,Small Cap,3535.0
 2024-06,Flexi Cap,4478.0
 2024-06,Large & Mid Cap,4610.0
-2024-06,ELSS,472.0
+2024-06,Elss,472.0
 2024-06,Value/Contra,1386.0
 2024-06,Sectoral/Thematic,10030.0
 2024-06,Liquid,40486.0
@@ -40,7 +40,7 @@ month,category,net_inflow_crore
 2024-07,Small Cap,3582.0
 2024-07,Flexi Cap,4869.0
 2024-07,Large & Mid Cap,5023.0
-2024-07,ELSS,471.0
+2024-07,Elss,471.0
 2024-07,Value/Contra,1582.0
 2024-07,Sectoral/Thematic,9896.0
 2024-07,Liquid,34643.0
@@ -52,7 +52,7 @@ month,category,net_inflow_crore
 2024-08,Small Cap,3376.0
 2024-08,Flexi Cap,5562.0
 2024-08,Large & Mid Cap,5411.0
-2024-08,ELSS,499.0
+2024-08,Elss,499.0
 2024-08,Value/Contra,1308.0
 2024-08,Sectoral/Thematic,8360.0
 2024-08,Liquid,41952.0
@@ -64,7 +64,7 @@ month,category,net_inflow_crore
 2024-09,Small Cap,4137.0
 2024-09,Flexi Cap,5397.0
 2024-09,Large & Mid Cap,4528.0
-2024-09,ELSS,537.0
+2024-09,Elss,537.0
 2024-09,Value/Contra,1334.0
 2024-09,Sectoral/Thematic,8518.0
 2024-09,Liquid,35308.0
@@ -76,7 +76,7 @@ month,category,net_inflow_crore
 2024-10,Small Cap,4444.0
 2024-10,Flexi Cap,6004.0
 2024-10,Large & Mid Cap,4581.0
-2024-10,ELSS,537.0
+2024-10,Elss,537.0
 2024-10,Value/Contra,1595.0
 2024-10,Sectoral/Thematic,7680.0
 2024-10,Liquid,39091.0
@@ -88,7 +88,7 @@ month,category,net_inflow_crore
 2024-11,Small Cap,3256.0
 2024-11,Flexi Cap,6111.0
 2024-11,Large & Mid Cap,5556.0
-2024-11,ELSS,571.0
+2024-11,Elss,571.0
 2024-11,Value/Contra,1436.0
 2024-11,Sectoral/Thematic,7397.0
 2024-11,Liquid,40506.0
@@ -100,7 +100,7 @@ month,category,net_inflow_crore
 2024-12,Small Cap,4249.0
 2024-12,Flexi Cap,4654.0
 2024-12,Large & Mid Cap,4878.0
-2024-12,ELSS,521.0
+2024-12,Elss,521.0
 2024-12,Value/Contra,1414.0
 2024-12,Sectoral/Thematic,9820.0
 2024-12,Liquid,34933.0
@@ -112,7 +112,7 @@ month,category,net_inflow_crore
 2025-01,Small Cap,4554.0
 2025-01,Flexi Cap,5603.0
 2025-01,Large & Mid Cap,4816.0
-2025-01,ELSS,516.0
+2025-01,Elss,516.0
 2025-01,Value/Contra,1339.0
 2025-01,Sectoral/Thematic,7893.0
 2025-01,Liquid,33892.0
@@ -124,7 +124,7 @@ month,category,net_inflow_crore
 2025-02,Small Cap,3534.0
 2025-02,Flexi Cap,6068.0
 2025-02,Large & Mid Cap,5524.0
-2025-02,ELSS,437.0
+2025-02,Elss,437.0
 2025-02,Value/Contra,1400.0
 2025-02,Sectoral/Thematic,9215.0
 2025-02,Liquid,32374.0
@@ -136,7 +136,7 @@ month,category,net_inflow_crore
 2025-03,Small Cap,4304.0
 2025-03,Flexi Cap,4767.0
 2025-03,Large & Mid Cap,4243.0
-2025-03,ELSS,500.0
+2025-03,Elss,500.0
 2025-03,Value/Contra,1497.0
 2025-03,Sectoral/Thematic,8614.0
 2025-03,Liquid,38681.0

@@ -1,25 +1,23 @@
+# data_ingestion.py
+
 import pandas as pd
 
-df = pd.read_csv("data/raw/02_nav_history.csv")
+nav = pd.read_csv("data/raw/02_nav_history.csv")
 
-# Date conversion
-df["date"] = pd.to_datetime(df["date"])
+# convert date
+nav["date"] = pd.to_datetime(nav["date"])
 
-# Sort
-df = df.sort_values(["amfi_code", "date"])
+# sort
+nav = nav.sort_values(["amfi_code", "date"])
 
-# Remove duplicates
-df = df.drop_duplicates()
+# forward fill missing nav
+nav["nav"] = nav.groupby("amfi_code")["nav"].ffill()
 
-# Forward fill NAV
-df["nav"] = df.groupby("amfi_code")["nav"].ffill()
+# remove duplicates
+nav = nav.drop_duplicates()
 
-# NAV validation
-df = df[df["nav"] > 0]
+# validate nav > 0
+nav = nav[nav["nav"] > 0]
 
-df.to_csv(
-    "data/processed/02_nav_history_cleaned.csv",
-    index=False
-)
-
-print(df.shape)
+# save
+nav.to_csv("data/processed/02_nav_history_cleaned.csv", index=False)

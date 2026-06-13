@@ -1,14 +1,7 @@
-# Data Dictionary
-
-## 01_fund_master.csv
-
-| Column | Type | Description |
-|----------|----------|----------|
-| amfi_code | Integer | AMFI Scheme Code |
-| fund_house | Text | Mutual Fund Company |
-| scheme_name | Text | Fund Name |
-| category | Text | Equity/Debt |
-| sub_category | Text | Fund Classification |
-| risk_category | Text | Risk Level |
-
-Source: AMFI India
+amfi_code → unique fund identifier
+nav → net asset value
+transaction_type → SIP/Lumpsum/Redemption
+amount_inr → transaction amount
+return_3yr_pct → 3-year annualized return
+sharpe_ratio → risk-adjusted return metric
+expense_ratio_pct → fund management fee
