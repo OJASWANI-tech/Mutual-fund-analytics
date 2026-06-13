@@ -6,6 +6,8 @@ The **Bluestock Mutual Fund Analytics Platform** is an end-to-end financial anal
 
 This project integrates **ETL pipelines, exploratory data analysis (EDA), advanced performance analytics, risk measurement, and interactive Power BI dashboards** to provide meaningful investment insights.
 
+ live website-https://bluestock-mf.streamlit.app/
+
 The platform helps evaluate:
 
 * Fund performance across multiple categories
