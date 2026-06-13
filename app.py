@@ -1,39 +1,42 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
 
 st.set_page_config(
     page_title="Bluestock MF Analytics",
-    page_icon="📈",
+    page_icon="📊",
     layout="wide"
 )
 
-# Custom CSS
+# Auto Light/Dark Theme CSS
 st.markdown("""
 <style>
-.main {
-    background-color: #F8FAFC;
+:root {
+    --radius: 16px;
 }
-.big-title {
-    font-size: 42px;
-    font-weight: 700;
-    color: #1E293B;
+
+[data-testid="stMetric"] {
+    border-radius: var(--radius);
+    padding: 18px;
+    border: 1px solid rgba(128,128,128,0.2);
+    box-shadow: 0px 6px 16px rgba(0,0,0,0.05);
 }
-.sub-text {
-    font-size: 18px;
-    color: #64748B;
+
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
-.metric-card {
-    background: linear-gradient(135deg, #6C4CF1, #3B2C9E);
-    padding: 20px;
-    border-radius: 15px;
-    color: white;
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+
+h1, h2, h3 {
+    font-weight: 700 !important;
 }
-.section {
-    padding-top: 20px;
-    padding-bottom: 20px;
+
+section[data-testid="stSidebar"] {
+    border-right: 1px solid rgba(128,128,128,0.2);
+}
+
+.stDataFrame {
+    border-radius: 12px;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -42,87 +45,115 @@ st.markdown("""
 perf_df = pd.read_csv("data/processed/07_scheme_performance_cleaned.csv")
 
 # Sidebar
-st.sidebar.image(
-    "https://cdn-icons-png.flaticon.com/512/2830/2830284.png",
-    width=120
-)
+st.sidebar.title("📊 Bluestock Analytics")
+st.sidebar.markdown("Smart Mutual Fund Dashboard")
 
-st.sidebar.title("Navigation")
 page = st.sidebar.radio(
-    "Go to",
+    "Navigation",
     ["Dashboard", "Fund Recommender", "Category Explorer"]
 )
 
-# Header
-st.markdown('<p class="big-title">Bluestock Mutual Fund Analytics Platform</p>', unsafe_allow_html=True)
-st.markdown('<p class="sub-text">Advanced Mutual Fund Intelligence Dashboard</p>', unsafe_allow_html=True)
+st.sidebar.markdown("---")
+st.sidebar.info(
+    "Built for Bluestock Capstone Project"
+)
+
+# Main Header
+st.title("Bluestock Mutual Fund Analytics Platform")
+st.caption("End-to-End Mutual Fund Intelligence Dashboard")
 
 st.divider()
 
-# KPI Section
+# KPI Row
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.metric("Total Funds", len(perf_df))
+    st.metric(
+        "Total Funds",
+        len(perf_df)
+    )
 
 with col2:
-    st.metric("Top Sharpe", round(perf_df["sharpe_ratio"].max(), 2))
+    st.metric(
+        "Top Sharpe Ratio",
+        round(perf_df["sharpe_ratio"].max(), 2)
+    )
 
 with col3:
-    st.metric("Avg 3Y Return", round(perf_df["return_3yr_pct"].mean(), 2))
+    st.metric(
+        "Avg 3Y Return",
+        f"{round(perf_df['return_3yr_pct'].mean(), 2)}%"
+    )
 
 with col4:
-    st.metric("Total AUM", f"₹{round(perf_df['aum_crore'].sum()/1000,2)}K Cr")
+    st.metric(
+        "Total AUM",
+        f"₹{round(perf_df['aum_crore'].sum()/1000, 2)}K Cr"
+    )
 
 st.divider()
 
+# Dashboard
 if page == "Dashboard":
 
-    col1, col2 = st.columns(2)
+    tab1, tab2 = st.tabs(["Overview", "Analytics"])
 
-    with col1:
-        st.subheader("Top 10 Funds by Sharpe Ratio")
-        top10 = perf_df.sort_values(
-            "sharpe_ratio",
-            ascending=False
-        ).head(10)
+    with tab1:
 
-        st.dataframe(
-            top10,
+        col1, col2 = st.columns([1.3, 1])
+
+        with col1:
+            st.subheader("Top 10 Funds by Sharpe Ratio")
+
+            top10 = perf_df.sort_values(
+                "sharpe_ratio",
+                ascending=False
+            ).head(10)
+
+            st.dataframe(
+                top10,
+                use_container_width=True
+            )
+
+        with col2:
+            st.subheader("Category Distribution")
+
+            pie_fig = px.pie(
+                perf_df,
+                names="category",
+                hole=0.45
+            )
+
+            st.plotly_chart(
+                pie_fig,
+                use_container_width=True
+            )
+
+    with tab2:
+
+        st.subheader("Risk vs Return Analysis")
+
+        scatter_fig = px.scatter(
+            perf_df,
+            x="return_3yr_pct",
+            y="std_dev_ann_pct",
+            size="aum_crore",
+            color="category",
+            hover_name="scheme_name"
+        )
+
+        st.plotly_chart(
+            scatter_fig,
             use_container_width=True
         )
 
-    with col2:
-        st.subheader("Fund Category Distribution")
-
-        cat_fig = px.pie(
-            perf_df,
-            names="category",
-            title="Category Split"
-        )
-
-        st.plotly_chart(cat_fig, use_container_width=True)
-
-    st.subheader("Risk vs Return Analysis")
-
-    fig = px.scatter(
-        perf_df,
-        x="return_3yr_pct",
-        y="std_dev_ann_pct",
-        size="aum_crore",
-        color="category",
-        hover_name="scheme_name",
-        template="plotly_dark"
-    )
-
-    st.plotly_chart(fig, use_container_width=True)
-
+# Recommender
 if page == "Fund Recommender":
 
-    st.subheader("Smart Fund Recommender")
+    st.subheader("Fund Recommendation Engine")
 
     risk = st.selectbox(
-        "Choose Your Risk Appetite",
+        "Select Risk Appetite",
         ["Low", "Moderate", "High"]
     )
 
@@ -135,19 +166,22 @@ if page == "Fund Recommender":
         ascending=False
     ).head(3)
 
-    st.success(f"Top 3 {risk} Risk Funds")
+    st.success(
+        f"Top 3 {risk} Risk Funds"
+    )
 
     st.dataframe(
         top_recommend,
         use_container_width=True
     )
 
+# Explorer
 if page == "Category Explorer":
 
-    st.subheader("Explore by Category")
+    st.subheader("Explore Funds by Category")
 
     category = st.selectbox(
-        "Select Category",
+        "Choose Category",
         perf_df["category"].unique()
     )
 
@@ -164,8 +198,7 @@ if page == "Category Explorer":
         filtered_cat,
         x="scheme_name",
         y="return_3yr_pct",
-        color="sharpe_ratio",
-        title=f"{category} Fund Performance"
+        color="sharpe_ratio"
     )
 
     st.plotly_chart(
@@ -173,6 +206,8 @@ if page == "Category Explorer":
         use_container_width=True
     )
 
+# Footer
 st.divider()
-
-st.caption("Built by Harshita | Bluestock Mutual Fund Analytics Capstone")
+st.caption(
+    "Built by Ojaswani https://github.com/OJASWANI-tech/Mutual-fund-analytics • Bluestock Mutual Fund Analytics Capstone"
+)
