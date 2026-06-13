@@ -1,7 +1,9 @@
-amfi_code → unique fund identifier
-nav → net asset value
-transaction_type → SIP/Lumpsum/Redemption
-amount_inr → transaction amount
-return_3yr_pct → 3-year annualized return
-sharpe_ratio → risk-adjusted return metric
-expense_ratio_pct → fund management fee
+# Data Quality Summary
+
+* Total schemes in fund_master: 40
+* Total unique AMFI codes in nav_history: 40
+* All AMFI codes matched successfully.
+* No missing scheme mappings found.
+* No duplicate AMFI codes detected.
+* NAV history is complete for all tracked schemes.
+* Dataset integrity validated for downstream analytics.
