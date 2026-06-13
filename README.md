@@ -1,5 +1,3 @@
-# Mutual-fund-analytics
-
 # Bluestock Mutual Fund Analytics Platform
 
 ## Project Overview
