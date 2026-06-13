@@ -19,7 +19,7 @@ This platform analyzes:
 """)
 
 # Load sample file
-perf_df = pd.read_csv("07_scheme_performance.csv")
+perf_df = pd.read_csv("data/07_scheme_performance.csv")
 
 st.subheader("Top 10 Funds by Sharpe Ratio")
 
